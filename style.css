@@ -25,6 +25,16 @@
     padding-right: 20px;
 }
 #meal-details{
-    /* display: none; */
+    display: none;
     height: 500px;
+    border-radius: 20px;
+    margin-top: 20px;
+    color: black;
+}
+#meal-details img{
+    margin-top: 20px;
+    width: auto;
+    height: 200px;
+    border-radius: 20px;
+    display: block;
 }

@@ -28,43 +28,72 @@ function randomMeals(meals) {
     `;
 }
 document.getElementById('search-btn').addEventListener("click", function () {
-    const searchName = document.getElementById("search-box").value;
-    displayMealDetails(searchName);
+    const mealName = document.getElementById("search-box").value;
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`)
+    .then(res => res.json())
+    .then(data => showMealInfo(data.meals[0],mealName))
+    .catch(error => alert("Item not found"))
 })
-const displayMealDetails = meal => {
-    const meals = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`)
-        .then(res => res.json())
-        .then(data => console.log(data.meals[0].strMeal));
-    document.getElementById('meal-list').innerHTML = `<p>hello world</p>`
-    document.getElement
-}
+//     displayMealDetails(searchName);
+// })
+// const displayMealDetails = meal => {
+//     const meals = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`)
+//         .then(res => res.json())
+//         .then(data => console.log(data.meals[0], data.meals[0].strMeal));
+// }
 
 function mealInfo() {
-    console.log("hello world");
+    // console.log("hello world");
     const mealName = this.getElementsByTagName('h5')[0].innerText;
     const mealDiv = document.getElementById('meal-details');
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`)
         .then(res => res.json())
-        .then(data => console.log(this))
-        .then(data => function (data) {
-            // mealDiv.innerHTML = `<img src=${data.meals[0].strMealThumb}
-            // <h5>Ingredients</h5>
-            // <ul>
-            //     <li>${data.meals[0].strIngredient1}hello</li>
-            //     <li>${data.meals[0].strIngredient2}</li>
-            //     <li>${data.meals[0].strIngredient3}</li>
-            //     <li>${data.meals[0].strIngredient4}</li>
-            //     <li>${data.meals[0].strIngredient5}</li>
-            // </ul>
-            // `
-            const p = document.createElement('p');
-            p.innerText = "hello world";
-            mealDiv.appendChild(p);
-            mealDiv.innerHTML = `<img src=${meals.strMealThumb}>
-    <h5>${meals.strMeal}</h5>
+        // .then(data => console.log(this))
+        .then(data => showMealInfo(data.meals[0], mealName, mealDiv))
+ } //{
+//             // mealDiv.innerHTML = `<img src=${data.meals[0].strMealThumb}
+//             console.log("hello world");
+//             // <h5>Ingredients</h5>
+//             // <ul>
+//             //     <li>${data.meals[0].strIngredient1}hello</li>
+//             //     <li>${data.meals[0].strIngredient2}</li>
+//             //     <li>${data.meals[0].strIngredient3}</li>
+//             //     <li>${data.meals[0].strIngredient4}</li>
+//             //     <li>${data.meals[0].strIngredient5}</li>
+//             // </ul>
+//             // `
+//             const p = document.createElement('p');
+//             p.innerText = "hello world";
+//             mealDiv.appendChild(p);
+//             mealDiv.innerHTML = `<img src=${meals.strMealThumb}>
+//     <h5>${meals.strMeal}</h5>
     
-    `;
-    mealDiv.style.backgroundColor= "balck";
-        })
+//     `;
+//     console.log("hello",mealDiv);
+//         })
 
+// }
+
+document.getElementById('home').addEventListener("click",function(){
+    const mealInfo = document.getElementById('meal-details');
+    mealInfo.style.display = 'none';
+})
+function showMealInfo(meal, mealName){
+    // console.log("hello world")
+    const mealDiv = document.getElementById('meal-details');
+    mealDiv.style.display = "block";
+    mealDiv.style.backgroundColor = "orange";
+    mealDiv.innerHTML = `<img src=${meal.strMealThumb}>
+    <h5>${mealName}</h5>
+    <br>
+    <br>
+    <h5>Ingredients</h5>
+    <ul>
+        <li>${meal.strIngredient1}hello</li>
+        <li>${meal.strIngredient2}</li>
+        <li>${meal.strIngredient3}</li>
+        <li>${meal.strIngredient4}</li>
+        <li>${meal.strIngredient5}</li>
+    </ul>
+    `
 }
