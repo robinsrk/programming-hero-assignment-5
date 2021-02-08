@@ -19,7 +19,7 @@ function randomMeals(meals) {
 }
 
 //search meals
-document.getElementById('search-btn').addEventListener("click", function () {
+document.getElementById('search-btn').addEventListener("click", function() {
     const mealName = document.getElementById("search-box").value;
     console.log(mealName);
     if (mealName) {
@@ -47,7 +47,7 @@ function mealInfo() {
 
 
 //home button to clear the meal information
-document.getElementById('home').addEventListener("click", function () {
+document.getElementById('home').addEventListener("click", function() {
     const mealInfo = document.getElementById('meal-details');
     mealInfo.style.display = 'none';
     const mealList = document.getElementById('meal-list');
@@ -66,7 +66,7 @@ function showMealInfo(meal) {
     <h5>${meal.strMeal}</h5>
     <br>
     <h5>Ingredients</h5>
-      <ul>
+    <ul>
          <li>${meal.strIngredient1}hello</li>
          <li>${meal.strIngredient2}</li>
          <li>${meal.strIngredient3}</li>
@@ -74,5 +74,4 @@ function showMealInfo(meal) {
          <li>${meal.strIngredient5}</li>
      </ul>
     `
-
 }
