@@ -51,7 +51,6 @@ document.getElementById('home').addEventListener("click", function() {
     const mealInfo = document.getElementById('meal-details');
     mealInfo.style.display = 'none';
     const mealList = document.getElementById('meal-list');
-    mealList.style.display = "block";
     document.getElementById('search-box').value = '';
 })
 
@@ -61,7 +60,6 @@ function showMealInfo(meal) {
     mealDiv.style.display = "flex";
     mealDiv.style.backgroundColor = "orange";
     const mealList = document.getElementById('meal-list');
-    mealList.style.display = "none";
     mealDiv.innerHTML = `<img src=${meal.strMealThumb}>
     <h5>${meal.strMeal}</h5>
     <br>
