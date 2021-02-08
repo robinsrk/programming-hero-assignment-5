@@ -30,7 +30,7 @@ document.getElementById('search-btn').addEventListener("click", function () {
             .then(data => showMealInfo(data.meals[0], mealName))
 
             // show error if meal not found
-            .catch(error => alert("Item not found"))
+            .catch(error => alert(`${mealName} not found`))
     }
     else {
         alert("Enter a meal name to search");
