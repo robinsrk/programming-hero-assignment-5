@@ -5,7 +5,7 @@ for (let i = 0; i < 9; i++) {
         .then(data => randomMeals(data.meals[0]))
 }
 
-// function to put random meals in html
+// put random meals in html
 function randomMeals(meals) {
     const mealList = document.getElementById('meal-list');
     const mealDiv = document.createElement('div');
@@ -40,26 +40,30 @@ document.getElementById('search-btn').addEventListener("click", function () {
 // details of each meal
 function mealInfo() {
     const mealName = this.getElementsByTagName('h5')[0].innerText;
-    const mealDiv = document.getElementById('meal-details');
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`)
         .then(res => res.json())
-        .then(data => showMealInfo(data.meals[0], mealName, mealDiv))
+        .then(data => showMealInfo(data.meals[0], mealName))
 }
+
 
 //home button to clear the meal information
 document.getElementById('home').addEventListener("click", function () {
     const mealInfo = document.getElementById('meal-details');
     mealInfo.style.display = 'none';
+    const mealList = document.getElementById('meal-list');
+    mealList.style.display = "block";
+    document.getElementById('search-box').value = '';
 })
 
 // show meal information in separate div
-function showMealInfo(meal, mealName) {
+function showMealInfo(meal) {
     const mealDiv = document.getElementById('meal-details');
-    mealDiv.style.display = "block";
+    mealDiv.style.display = "flex";
     mealDiv.style.backgroundColor = "orange";
+    const mealList = document.getElementById('meal-list');
+    mealList.style.display = "none";
     mealDiv.innerHTML = `<img src=${meal.strMealThumb}>
-    <h5>${mealName}</h5>
-    <br>
+    <h5>${meal.strMeal}</h5>
     <br>
     <h5>Ingredients</h5>
       <ul>

@@ -1,13 +1,8 @@
-.search{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .meal{
     display: flex;
     float: left;
-    margin: 40px;
+    margin: 10px 40px 10px 40px;
+    text-align: center;
     height: 300px;
     background-color: orange;
     border-radius: 20px;
@@ -31,14 +26,16 @@
 #meal-details{
     display: none;
     height: 500px;
-    width: 800px;
+    width: 500px;
+    flex-direction: column;
     border-radius: 20px;
     margin-top: 20px;
+    align-items: center;
     color: black;
 }
 #meal-details img{
     padding-top: 10px;
-    width: auto;
+    width: 200px;
     height: 200px;
     border-radius: 20px;
     display: block;
